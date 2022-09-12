@@ -1,0 +1,86 @@
+{
+	"name": "asltoolbox",
+	"label": "ASL-toolbox: lightweight ASL processing",
+	"description": "Processes ASL data to produce native space CBF maps",
+	"version": "0.0.1",
+	"inputs": {
+		"api_key": {
+			"base": "api-key"
+		},
+		"asl": {
+			"base": "file",
+			"description": "Path to raw ASL image",
+			"optional": false
+		},
+		"m0": {
+			"base": "file",
+			"description": "Path to M0 image",
+			"optional": false
+		},
+		"aslcontext": {
+			"base": "file",
+			"description": "File describing the volumes in the ASL file",
+			"optional": false
+		}
+	},
+	"config": {
+		"PLD": {
+			"default": 1.8,
+			"description": "Post-labelling delay",
+			"type": "number"
+			},
+		"LD": {
+			"default": 1.8,
+			"description": "Labelling delay",
+			"type": "number"
+			},
+		"m0scale": {
+			"default": 1,
+			"descripton": "M0 scale",
+			"type": "number"
+		},
+		"m0type": {
+			"default": "Separate",
+			"enum": [
+				"Separate"
+				"Included"
+				"Absent"
+			],
+			"type": "string"
+		},
+		"fhwm": {
+			"default": 8,
+			"description": "size of smoothing kernel",
+			"type": "number"
+		},
+		"labelefficiency": {
+			"default": 0.72,
+			"description": "labelling efficiency",
+			"type": "number"
+		}
+},
+	"environment": {
+		"FLYWHEEL": "/flywheel/v0",
+		"FSLDIR": "/usr/share/fsl/5.0",
+		"FSLMULTIFILEQUIT": "TRUE",
+    "FSLOUTPUTTYPE": "NIFTI_GZ",
+		"LANG": "C.UTF-8",
+		"LD_LIBRARY_PATH": "/usr/lib/fsl/5.0:",
+		"PATH": "/usr/share/fsl/5.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+	},
+	"command": "python /flywheel/v0/run.py",
+	"author": "William Tackett, Azeez Adebimpe",
+	"maintainer": "William Tackett",
+	"license": "BSD-3-Clause",
+	"source": "https://github.com/willtack/asltlbx-py",
+	"environment": {"REQUESTS_CA_BUNDLE":"/etc/ssl/certs/ca-certificates.crt"},
+	"custom": {
+		"gear-builder": {
+			"category": "analysis",
+			"image": "willtack/asltlbx-fw:0.0.1_0.0.1"
+		},
+		"flywheel": {
+			"suite": "BrainScienceCenter"
+		}
+	}
+}
