@@ -1,0 +1,98 @@
+{
+	"name": "asllite",
+	"label": "ASL-toolbox: lightweight ASL processing",
+	"description": "Processes ASL data to produce native space CBF maps",
+	"version": "0.2.2_0.1.3",
+	"inputs": {
+		"api_key": {
+			"base": "api-key"
+		},
+		"asl": {
+			"base": "file",
+			"description": "Path to raw ASL image",
+			"optional": false
+		},
+		"m0": {
+			"base": "file",
+			"description": "Path to M0 image",
+			"optional": false
+		},
+		"aslcontext": {
+			"base": "file",
+			"description": "File describing the volumes in the ASL file",
+			"optional": false
+		},
+		"freesurfer_license": {
+			"base": "file",
+			"description": "Freesurfer license file",
+			"optional": false
+		}
+	},
+	"config": {
+		"PLD": {
+			"default": 1.8,
+			"description": "Post-labelling delay",
+			"type": "number"
+		},
+		"LD": {
+			"default": 1.8,
+			"description": "Labelling delay",
+			"type": "number"
+		},
+		"m0scale": {
+			"default": 1,
+			"descripton": "M0 scale",
+			"type": "number"
+		},
+		"m0type": {
+			"default": "Separate",
+			"enum": [
+				"Separate",
+				"Included",
+				"Absent"
+			],
+			"type": "string"
+		},
+		"fwhm": {
+			"default": 8,
+			"description": "size of smoothing kernel for M0",
+			"type": "number"
+		},
+		"labelefficiency": {
+			"default": 0.72,
+			"description": "labelling efficiency",
+			"type": "number"
+		},
+		"asl_fwhm": {
+			"default": 3,
+			"description": "size of smoothing kernel for output mean ASL",
+			"type": "number"
+		}
+	},
+	"environment": {
+		"FLYWHEEL": "/flywheel/v0",
+		"PYTHON_PIP_VERSION": "20.0.2",
+        "PYTHON_VERSION": "3.7.4",
+		"FSLDIR": "/opt/fsl-6.0.5.1",
+		"FSLMULTIFILEQUIT": "TRUE",
+		"FSLOUTPUTTYPE": "NIFTI_GZ",
+		"LANG": "C.UTF-8",
+		"LD_LIBRARY_PATH": "/opt/fsl-6.0.5.1/lib:$LD_LIBRARY_PATH",
+		"PATH": "/opt/fsl-6.0.5.1/bin/:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/afni-latest:/usr/share/ants",
+		"REQUESTS_CA_BUNDLE": "/etc/ssl/certs/ca-certificates.crt"
+	},
+	"command": "/usr/local/miniconda/bin/python /flywheel/v0/run.py",
+	"author": "William Tackett, Azeez Adebimpe",
+	"maintainer": "William Tackett",
+	"license": "BSD-3-Clause",
+	"source": "https://github.com/willtack/asltlbx-py",
+	"custom": {
+		"gear-builder": {
+			"category": "analysis",
+			"image": "willtack/asltlbx-fw:0.2.2_0.1.3"
+		},
+		"flywheel": {
+			"suite": "BrainScienceCenter"
+		}
+	}
+}
