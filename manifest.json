@@ -2,7 +2,7 @@
 	"name": "asllite",
 	"label": "ASL-toolbox: lightweight ASL processing",
 	"description": "Processes ASL data to produce native space CBF maps",
-	"version": "0.2.2_0.1.3",
+	"version": "0.2.4_0.2.0",
 	"inputs": {
 		"api_key": {
 			"base": "api-key"
@@ -73,12 +73,21 @@
 		"FLYWHEEL": "/flywheel/v0",
 		"PYTHON_PIP_VERSION": "20.0.2",
         "PYTHON_VERSION": "3.7.4",
+		"FREESURFER_HOME": "/opt/freesurfer",
+		"FUNCTIONALS_DIR": "/opt/freesurfer/sessions",
+		"LOCAL_DIR": "/opt/freesurfer/local",
+        "MINC_BIN_DIR": "/opt/freesurfer/mni/bin",
+        "MINC_LIB_DIR": "/opt/freesurfer/mni/lib",
+        "MKL_NUM_THREADS": "1",
+        "MNI_DATAPATH": "/opt/freesurfer/mni/data",
+        "MNI_DIR": "/opt/freesurfer/mni",
+        "MNI_PERL5LIB": "/opt/freesurfer/mni/lib/perl5/5.8.5",
 		"FSLDIR": "/opt/fsl-6.0.5.1",
 		"FSLMULTIFILEQUIT": "TRUE",
 		"FSLOUTPUTTYPE": "NIFTI_GZ",
 		"LANG": "C.UTF-8",
 		"LD_LIBRARY_PATH": "/opt/fsl-6.0.5.1/lib:$LD_LIBRARY_PATH",
-		"PATH": "/opt/fsl-6.0.5.1/bin/:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/afni-latest:/usr/share/ants",
+		"PATH": "/opt/fsl-6.0.5.1/bin/:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/afni-latest:/usr/share/ants:/opt/freesurfer/bin",
 		"REQUESTS_CA_BUNDLE": "/etc/ssl/certs/ca-certificates.crt"
 	},
 	"command": "/usr/local/miniconda/bin/python /flywheel/v0/run.py",
@@ -89,7 +98,7 @@
 	"custom": {
 		"gear-builder": {
 			"category": "analysis",
-			"image": "willtack/asltlbx-fw:0.2.2_0.1.3"
+			"image": "willtack/asltlbx-fw:0.2.4_0.2.0"
 		},
 		"flywheel": {
 			"suite": "BrainScienceCenter"
