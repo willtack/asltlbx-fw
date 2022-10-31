@@ -57,6 +57,7 @@ with flywheel.GearContext() as context:
     fwhm = config.get('fwhm')
     labelefficiency = config.get('labelefficiency')
     asl_fwhm = config.get('asl_fwhm')
+    dir = config.get('dir')
     # frac = float(config.get('bet_frac'))
     # alt_skullstrip = config.get('alt_skullstrip')
 
@@ -75,6 +76,7 @@ def write_command():
             "--fwhm {}".format(fwhm),
             "--labelefficiency {}".format(labelefficiency),
             "--asl_fwhm {}".format(asl_fwhm),
+            "--dir {}".format(dir),
             # "--frac {}".format(frac),
             # "--alt_skullstrip {}".format(alt_skullstrip),
             "--aslcontext '{}'".format(aslcontext_path),
