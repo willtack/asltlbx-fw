@@ -1,4 +1,4 @@
-FROM willtack/asltlbx-py:0.3.0
+FROM willtack/asltlbx-py:0.4.0
 
 MAINTAINER Will Tackett <William.Tackett@pennmedicine.upenn.edu>
 
